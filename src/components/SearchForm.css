@@ -2,6 +2,11 @@
   padding: 15px;
 }
 
+.SearchForm input {
+  font-size: 100%;
+  padding: 10px;
+}
+
 .searchBar {
   display: flex;
 }
@@ -27,9 +32,4 @@
 .SearchForm button:hover {
   background-color: #1a7567;
   cursor: pointer;
-}
-
-.SearchForm input {
-  font-size: 100%;
-  padding: 10px;
 }

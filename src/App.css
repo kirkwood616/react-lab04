@@ -4,7 +4,7 @@ body {
 }
 
 .App {
-  border: 1px solid gray;
+  border: 1px solid #2f3336;
   width: 75%;
   margin: 15px auto;
 }
@@ -17,4 +17,10 @@ a {
 
 a:visited {
   color: #28b39d;
+}
+
+@media only screen and (max-width: 900px) {
+  .App {
+    width: 85%;
+  }
 }
