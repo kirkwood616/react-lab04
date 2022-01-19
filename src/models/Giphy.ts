@@ -5,14 +5,13 @@ export interface Giphy {
 export interface Data {
   id: string;
   title: string;
-  url: string;
-  image: Images;
+  images: Images;
 }
 
 export interface Images {
-  original: OriginalImage;
+  fixed_height: FixedHeightImage;
 }
 
-export interface OriginalImage {
+export interface FixedHeightImage {
   url: string;
 }

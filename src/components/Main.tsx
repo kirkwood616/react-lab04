@@ -1,9 +1,9 @@
 // import "./Main.css";
 import { useState, useEffect } from "react";
-import { fetchGiphy, fetchTrending } from "../services/GiphyApiService";
+import { fetchSearch, fetchTrending } from "../services/GiphyApiService";
 import ResultsList from "./ResultsList";
 import SearchForm from "./SearchForm";
-import { Data } from "../models/Giphy";
+import { Data, Images, FixedHeightImage } from "../models/Giphy";
 
 function Main() {
   const [gifs, setGifs] = useState<Data[]>([]);
@@ -14,15 +14,25 @@ function Main() {
   }
 
   useEffect(() => {
-    // fetchGiphy(search).then((gifs) => setGifs(gifs));
-    fetchTrending().then((gifs) => setGifs(gifs));
-    console.log(gifs);
-  }, []);
+    if (search) {
+      fetchSearch(search).then((gifs) => setGifs(gifs));
+    } else {
+      fetchTrending().then((data) => setGifs(data));
+    }
+  }, [search]);
 
   return (
     <div className="Main">
       <SearchForm onSubmit={handleSearchForm} />
       <ResultsList />
+      <div>
+        {gifs.map((gif, i) => (
+          <li key={i}>
+            {gif.title}
+            <img src={gif.images.fixed_height.url} alt="" />
+          </li>
+        ))}
+      </div>
     </div>
   );
 }
