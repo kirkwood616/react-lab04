@@ -1,9 +1,22 @@
 import axios from "axios";
+import { Data } from "../models/Giphy";
 
-export function fetchGiphy(query: string) {
+export function fetchTrending(): Promise<Data[]> {
+  const apiKey = process.env.REACT_APP_GIPHY_API_KEY || "";
+
+  return axios
+    .get("https://api.giphy.com/v1/gifs/trending", {
+      params: {
+        api_key: apiKey,
+      },
+    })
+    .then((res) => res.data.data);
+}
+
+export function fetchGiphy(query: string): Promise<Data[]> {
   let endPoint = query ? "search" : "trending";
 
-  const apiKey = "XImD5aPL9dt75PxzMRO0jQ4Ka8Qr5QiH";
+  const apiKey = process.env.REACT_APP_GIPHY_API_KEY || "";
 
   const trendingParams = {
     api_key: apiKey,
@@ -14,11 +27,11 @@ export function fetchGiphy(query: string) {
     q: query,
   };
 
-  // let params = query ? queryParams : trendingParams;
+  let params = query ? queryParams : trendingParams;
 
   return axios
     .get(`https://api.giphy.com/v1/gifs/${endPoint}`, {
-      params: query ? queryParams : trendingParams,
+      params: params,
     })
-    .then((res) => res.data);
+    .then((res) => res.data.data);
 }

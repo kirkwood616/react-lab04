@@ -10,9 +10,10 @@ function SearchForm({ onSubmit }: Props) {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-
     onSubmit(searchTerm);
+    setSearchTerm("");
   }
+
   return (
     <div className="SearchForm" onSubmit={handleSubmit}>
       <form className="searchFormInput">

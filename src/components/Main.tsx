@@ -1,21 +1,23 @@
 // import "./Main.css";
 import { useState, useEffect } from "react";
-import { fetchGiphy } from "../services/GiphyApiService";
+import { fetchGiphy, fetchTrending } from "../services/GiphyApiService";
 import ResultsList from "./ResultsList";
 import SearchForm from "./SearchForm";
+import { Data } from "../models/Giphy";
 
 function Main() {
-  const [gifs, setGifs] = useState([]);
+  const [gifs, setGifs] = useState<Data[]>([]);
   const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    fetchGiphy(search).then((gifs) => setGifs(gifs));
-    console.log(gifs);
-  }, [search]);
 
   function handleSearchForm(searchTerm: string): void {
     setSearch(searchTerm);
   }
+
+  useEffect(() => {
+    // fetchGiphy(search).then((gifs) => setGifs(gifs));
+    fetchTrending().then((gifs) => setGifs(gifs));
+    console.log(gifs);
+  }, []);
 
   return (
     <div className="Main">
