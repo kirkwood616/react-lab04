@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { fetchSearch, fetchTrending } from "../services/GiphyApiService";
 import ResultsList from "./ResultsList";
 import SearchForm from "./SearchForm";
-import { Data, Images, FixedHeightImage } from "../models/Giphy";
+import { Data } from "../models/Giphy";
 
 function Main() {
   const [gifs, setGifs] = useState<Data[]>([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string>("");
 
   function handleSearchForm(searchTerm: string): void {
     setSearch(searchTerm);
@@ -24,15 +24,7 @@ function Main() {
   return (
     <div className="Main">
       <SearchForm onSubmit={handleSearchForm} />
-      <ResultsList />
-      <div>
-        {gifs.map((gif, i) => (
-          <li key={i}>
-            {gif.title}
-            <img src={gif.images.fixed_height.url} alt="" />
-          </li>
-        ))}
-      </div>
+      <ResultsList gifs={gifs} />
     </div>
   );
 }
