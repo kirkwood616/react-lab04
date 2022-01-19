@@ -1,4 +1,3 @@
-// import "./Main.css";
 import { useState, useEffect } from "react";
 import { fetchSearch, fetchTrending } from "../services/GiphyApiService";
 import ResultsList from "./ResultsList";

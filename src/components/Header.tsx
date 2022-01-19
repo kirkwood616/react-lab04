@@ -3,7 +3,7 @@ import "./Header.css";
 function Header() {
   return (
     <div className="Header">
-      <h1>GIF App</h1>
+      <h1>GIF Sifter</h1>
       <p className="attribution">
         Powered By{" "}
         <a
