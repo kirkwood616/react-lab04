@@ -23,7 +23,7 @@ function Main() {
   return (
     <div className="Main">
       <SearchForm onSubmit={handleSearchForm} />
-      <ResultsList gifs={gifs} />
+      <ResultsList gifs={gifs} search={search} />
     </div>
   );
 }

@@ -4,12 +4,13 @@ import Result from "./Result";
 
 interface Props {
   gifs: Data[];
+  search: string;
 }
 
-function ResultsList({ gifs }: Props) {
+function ResultsList({ gifs, search }: Props) {
   return (
     <div className="ResultsList">
-      <h2>Results</h2>
+      {search ? <h2>Results for "{search}"</h2> : <h2>Trending</h2>}
       <div className="resultsListContainer">
         {gifs.map((gif, i) => (
           <Result key={i} gif={gif} />
