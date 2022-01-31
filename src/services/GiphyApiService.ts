@@ -17,7 +17,7 @@ export function fetchSearch(query: string): Promise<Data[]> {
   const apiKey = process.env.REACT_APP_GIPHY_API_KEY || "";
 
   return axios
-    .get("https://api.giphy.com/v1/gifs/search", {
+    .get("https://api.giphy.com/v1/gifs/search?", {
       params: {
         api_key: apiKey,
         q: query,
